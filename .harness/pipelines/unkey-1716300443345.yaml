@@ -23,7 +23,10 @@ pipeline:
                   identifier: installdependencies
                   name: install dependencies
                   spec:
-                    command: npm install
+                    shell: Sh
+                    command: |-
+                      cd apps/vault
+                      docker build .
                   timeout: ""
                   type: Run
               - step:
@@ -41,9 +44,9 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Arm64
             os: MacOS
+            arch: Arm64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI
